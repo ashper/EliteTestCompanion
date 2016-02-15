@@ -1,0 +1,53 @@
+﻿<Page x:Class="TestingUI.Bookmarks"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:TestingUI"
+      mc:Ignorable="d"
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="Bookmarks" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Loaded="Page_Loaded">
+    <Grid>
+        <DataGrid x:Name="bookmarksGrid" Margin="0,0,0,0" Background="{x:Null}" Foreground="#FFD65D18" BorderBrush="Transparent" RowBackground="{x:Null}"
+                  ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" CellStyle="{DynamicResource DataGridCellStyle}"
+                  RowHeaderStyle="{DynamicResource DataGridRowHeaderStyle}" GridLinesVisibility="None" AutoGenerateColumns="False" SelectionUnit="Cell"
+                  FontWeight="Bold" MouseLeftButtonDown="bookmarksGrid_MouseLeftButtonDown" SelectionMode="Single" PreviewKeyDown="bookmarksGrid_PreviewKeyDown">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding SystemName}" Header="SYSTEM" MinWidth="100" />
+                <DataGridTextColumn Binding="{Binding Memo}" Header="MEMO" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+    <Page.Resources>
+        <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="{DynamicResource EliteColour}" />
+        <Style x:Key="DataGridColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#FFD65D18" />
+            <Setter Property="BorderThickness" Value="0 0 0 1" />
+            <Setter Property="BorderBrush" Value="{DynamicResource EliteColourBrush}" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style x:Key="DataGridRowHeaderStyle" TargetType="{x:Type DataGridRowHeader}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#FFD65D18" />
+        </Style>
+        <Style x:Key="DataGridCellStyle" TargetType="{x:Type DataGridCell}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{DynamicResource EliteColourBrush}" />
+            <Style.Triggers>
+                <Trigger Property="IsEditing" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource EliteColourBrush}" />
+                    <Setter Property="Foreground" Value="Black" />
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource EliteColourBrush}" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="BorderBrush" Value="{x:Null}" />
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="{x:Null}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+</Page>
