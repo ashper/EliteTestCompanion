@@ -22,10 +22,12 @@ namespace TestingUI
             var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
             if (currentDirectory == null)
                 return;
-            if (AssemblyName.GetAssemblyName(currentAssembly.Location).ProcessorArchitecture == ProcessorArchitecture.X86)
-                e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"C:\Users\perkinsa\Desktop\Vlc.DotNet-master\Vlc.DotNet-master\lib\x86\"));
-            else
-                e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"C:\Users\perkinsa\Desktop\Vlc.DotNet-master\Vlc.DotNet-master\lib\x64\"));
+
+            //TODO: Remove this as 64bit support for VLC is flakey atm?
+            //if (AssemblyName.GetAssemblyName(currentAssembly.Location).ProcessorArchitecture == ProcessorArchitecture.X86)
+            e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"lib\x86\"));
+            //else
+            //    e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, @"lib\x64\"));
         }
     }
 }
